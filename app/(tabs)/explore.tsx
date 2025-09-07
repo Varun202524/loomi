@@ -1,5 +1,7 @@
+
 import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { Platform, StyleSheet, Button, Alert } from 'react-native';
+import { getAuth, signOut } from 'firebase/auth';
 
 import { Collapsible } from '@/components/Collapsible';
 import { ExternalLink } from '@/components/ExternalLink';
@@ -9,6 +11,18 @@ import { ThemedView } from '@/components/ThemedView';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 
 export default function TabTwoScreen() {
+
+  const handleSignOut = () => {
+    const auth = getAuth();
+    signOut(auth).then(() => {
+      // Sign-out successful.
+      Alert.alert('Success', 'User signed out successfully!');
+    }).catch((error) => {
+      // An error happened.
+      Alert.alert('Error', error.message);
+    });
+  }
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
@@ -22,6 +36,7 @@ export default function TabTwoScreen() {
       }>
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Explore</ThemedText>
+        <Button title="Sign Out" onPress={handleSignOut} />
       </ThemedView>
       <ThemedText>This app includes example code to help you get started.</ThemedText>
       <Collapsible title="File-based routing">

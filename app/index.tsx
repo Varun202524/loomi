@@ -1,42 +1,84 @@
-
+// WelcomeScreen.tsx (Enhanced)
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, StatusBar, SafeAreaView } from 'react-native';
 import { useRouter } from 'expo-router';
+import { ThemedButton } from '@/components/ThemedButton';
+import { useTheme } from '@/hooks/useTheme';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const WelcomeScreen = () => {
   const router = useRouter();
+  const { colors, isDark } = useTheme();
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Welcome to Loomi</Text>
-      <View style={styles.buttonContainer}>
-        <Button title="Sign In" onPress={() => router.push('/sign-in')} />
-        <View style={styles.spacer} />
-        <Button title="Sign Up" onPress={() => router.push('/sign-up')} />
-      </View>
-    </View>
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: colors.background }]}>
+      <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} />
+      <LinearGradient
+        colors={isDark ? [colors.background, colors.surface] : [colors.surface, colors.background]}
+        style={styles.container}
+      >
+        <View style={styles.header}>
+          <Text style={[styles.title, { color: colors.text }]}>Welcome to</Text>
+          <Text style={[styles.appName, { color: colors.primary }]}>Loomi</Text>
+          <Text style={[styles.subtitle, { color: colors.textSecondary }]}>
+            Your journey starts here
+          </Text>
+        </View>
+        
+        <View style={styles.buttonContainer}>
+          <ThemedButton
+            title="Sign In"
+            onPress={() => router.push('/sign-in')}
+            variant="primary"
+            style={styles.button}
+          />
+          <ThemedButton
+            title="Sign Up"
+            onPress={() => router.push('/sign-up')}
+            variant="secondary"
+            style={styles.button}
+          />
+        </View>
+      </LinearGradient>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
   },
+  header: {
+    alignItems: 'center',
+    marginBottom: 60,
+  },
   title: {
-    fontSize: 24,
+    fontSize: 28,
+    fontWeight: '300',
+    marginBottom: 8,
+  },
+  appName: {
+    fontSize: 48,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 16,
+  },
+  subtitle: {
+    fontSize: 16,
+    textAlign: 'center',
   },
   buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '80%',
+    width: '100%',
+    gap: 16,
+    paddingHorizontal: 20,
   },
-  spacer: {
-    width: 20, // Adjust the space between the buttons
+  button: {
+    width: '100%',
   },
 });
 

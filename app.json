@@ -12,11 +12,14 @@
       "supportsTablet": true
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
+      "softwareKeyboardLayoutMode": "resize",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.varunnair.loomi"
     },
     "web": {
       "bundler": "metro",
@@ -24,6 +27,16 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/icon.png",
+          "color": "#007AFF",
+          "sounds": [
+            "default"
+          ]
+        }
+      ],
       "expo-router",
       [
         "expo-splash-screen",
@@ -37,6 +50,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "SUPABASE_URL": "https://gxnpovjyqsstivlgbjuw.supabase.co",
+      "SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4bnBvdmp5cXNzdGl2bGdianV3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTcyNTE2NDIsImV4cCI6MjA3MjgyNzY0Mn0.cAKrWcxagVulobGnH9eCNnZ05UhOcJuM2WNZGUIhq6Q",
+      "router": {},
+      "eas": {
+        "projectId": "d018474f-1b10-4e85-8cb5-ef9a57a591b5"
+      }
+    },
+    "owner": "varunnair"
   }
 }

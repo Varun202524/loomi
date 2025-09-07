@@ -1,26 +1,29 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
-
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
-
+// constants/Colors.ts
 export const Colors = {
   light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
+    background: '#FFFFFF',
+    surface: '#F8F9FA',
+    primary: '#007AFF',
+    primaryDark: '#0056CC',
+    text: '#000000',
+    textSecondary: '#6C757D',
+    border: '#E9ECEF',
+    borderFocus: '#007AFF',
+    error: '#DC3545',
+    shadow: 'rgba(0, 0, 0, 0.1)',
+    overlay: 'rgba(0, 0, 0, 0.5)',
   },
   dark: {
-    text: '#ECEDEE',
-    background: '#151718',
-    tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
-  },
+    background: '#000000',
+    surface: '#1C1C1E',
+    primary: '#0A84FF',
+    primaryDark: '#0056CC',
+    text: '#FFFFFF',
+    textSecondary: '#8E8E93',
+    border: '#38383A',
+    borderFocus: '#0A84FF',
+    error: '#FF453A',
+    shadow: 'rgba(255, 255, 255, 0.1)',
+    overlay: 'rgba(0, 0, 0, 0.8)',
+  }
 };

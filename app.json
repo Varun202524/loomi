@@ -32,9 +32,6 @@
         {
           "icon": "./assets/icon.png",
           "color": "#007AFF",
-          "sounds": [
-            "default"
-          ]
         }
       ],
       "expo-router",
